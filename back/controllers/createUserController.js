@@ -15,7 +15,7 @@ export default async(req, res) => {
     const saltRounds = 10 // Nombre de tours de l'algorithme de hashage bcrypt
     const { first_name, last_name, email, age, password } = req.body // Récupération des données de la requête POST
 
-    const sql = "INSERT INTO User (first_name, last_name, email, age, password, is_admin) VALUES (?,?,?,?,?)" // Requête SQL pour ajouter l'utilisateur à la BDD
+    const sql = "INSERT INTO User (first_name, last_name, email, age, password, is_admin) VALUES (?,?,?,?,?, 0)" // Requête SQL pour ajouter l'utilisateur à la BDD
 
     if (password.length <= 8 && password.length > 250) { // Vérification de la longueur du mot de passe
         return { response: 'mdp trop court' } // Si la longueur est incorrecte, on retourne une erreur
@@ -27,7 +27,8 @@ export default async(req, res) => {
 
         // Erreur lors de la vérification de l'e-mail
         if (emailPresent === undefined) {
-            return alert("Cette adresse mail n'existe pas") // On affiche une alerte pour avertir l'utilisateur
+            return { response: "Cette adresse mail n'existe pas" }
+
         }
 
         // E-mail déjà présent en BDD 
@@ -39,7 +40,7 @@ export default async(req, res) => {
         const mpdHash = await bcrypt.hash(password, saltRounds)
 
         // On crée la liste des paramètres pour ajouter l'utilisateur à la BDD
-        const paramsSql = [first_name, last_name, email,age, mpdHash, false]
+        const paramsSql = [first_name, last_name, email, age, mpdHash, 0]
         
         
         // On exécute la requête SQL pour ajouter l'utilisateur à la BDD

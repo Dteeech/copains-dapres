@@ -3,6 +3,7 @@ import mysql from "mysql";
 
 // Création d'un groupe de connexions pour la base de données MySQL
 export let pool  = mysql.createPool({
+    connectionLimit : 10000,
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root', // Utilisez le nom d'utilisateur de votre base de données MAMP
     password: process.env.DB_PASSWORD || 'root', // Utilisez le mot de passe de votre base de données MAMP

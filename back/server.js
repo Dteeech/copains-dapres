@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended:true })); // Utilisation du parseur de 
 app.use(express.static("public")); // Utilisation de la gestion des fichiers statiques pour les fichiers dans le répertoire "public"
 
 app.use("/", router); // Utilisation des routes définies dans le fichier "routes.js"
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 // Démarrage du serveur sur le port 3001
 app.listen(PORT, () => {
   console.log(`Le serveur est en cours d'exécution sur le port ${PORT}`);

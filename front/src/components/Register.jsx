@@ -9,9 +9,10 @@ const AddUser = () => {
 
     const [isRegistered, setIsRegistered] = useState(false)
     const [userData, setUserData] = useState({
-        last_name: '',
         first_name: '',
+        last_name: '',
         email: '',
+        age: '',
         password: ''
     })
 
@@ -32,11 +33,12 @@ const AddUser = () => {
             alert('le champ ne peut pas être vide')
             return
         }
-
+        //force la data en minuscules
         const trimmedFormData = {
-            last_name: userData.last_name.trim(),
             first_name: userData.first_name.trim(),
-            email: userData.email.trim().toLowerCase(), //force la data en minuscules
+            last_name: userData.last_name.trim(),
+            email: userData.email.trim().toLowerCase(),
+            age: userData.age.trim().toLowerCase(),
             password: userData.password
         }
 
@@ -51,34 +53,35 @@ const AddUser = () => {
                 console.log(err)
             })
     }
-    console.log(setIsRegistered)
+    console.log(isRegistered)
 
     return (
 
-        <Fragment>
-            { isRegistered === false ?
-            
-                 (
-                 
-                <div className ="form_container register">
-                    <form className="form" onSubmit={submit}>
-                    
-                        <input className="" type='text' placeholder='nom' name='last_name' onChange={handleChange} value={userData.last_name} />
-                        <input type='text' placeholder='prenom' name='first_name' onChange={handleChange} value={userData.first_name} />
-                        <input type='email' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
-                        <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
-                        <input type='submit' />
-                    
-                    </form>
-                
-                </div>)
-                
-                : 
-                
-                <Navigate to = "/login"/>
-                
+        <>
+            {isRegistered === false ?
+
+                (
+
+                    <div className="form_container register">
+                        <form className="form" onSubmit={submit}>
+
+                            <input className="" type='text' placeholder='nom' name='last_name' onChange={handleChange} value={userData.last_name} />
+                            <input type='text' placeholder='prenom' name='first_name' onChange={handleChange} value={userData.first_name} />
+                            <input type='email' placeholder='email' name='email' onChange={handleChange} value={userData.email} />
+                            <input type="age" placeholder='age' name='age' onChange={handleChange} value={userData.age} />
+                            <input type='password' placeholder='password' name='password' onChange={handleChange} value={userData.password} />
+                            <input type='submit' />
+
+                        </form>
+
+                    </div>)
+
+                :
+
+                <Navigate to="/login" />
+
             }
-        </Fragment>
+        </>
     )
 }
 
