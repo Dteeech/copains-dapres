@@ -16,5 +16,5 @@ app.use("/", router); // Utilisation des routes définies dans le fichier "route
 const PORT = process.env.PORT || 3000
 // Démarrage du serveur sur le port 3001
 app.listen(PORT, () => {
-  console.log(`Le serveur est en cours d'exécution sur le port ${PORT}`);
+  console.log(`Le serveur est en cours d'exécution sur le port http://localhost:${PORT}`);
 });
