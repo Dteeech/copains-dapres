@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import routes from '../tools/routes.js';
+import routes from './routes.js';
 
 const Router = () => {
     return (

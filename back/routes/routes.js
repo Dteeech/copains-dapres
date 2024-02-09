@@ -1,7 +1,8 @@
+// routes/routes.js
 import express from "express"
 import createUserController from "../controllers/createUserController.js"
 
-const router = express.Router()
+const router = express.Router();
 
 const routesGET = [
     // { route: "/admin/allUsers", controller: allUsers },
@@ -10,13 +11,11 @@ const routesGET = [
 ]
 
 const routesPOST = [
-    
     { route: "/create-account", controller: createUserController },
 ]
 
 const routesUPLOAD = [
-    
-
+    // ...
 ]
 
 routesGET.map((item) => {
@@ -30,4 +29,4 @@ routesUPLOAD.map((item) => {
     router.post(item.route, item.controller)
 })
 
-export default router
+export default router;
