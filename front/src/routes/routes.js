@@ -1,6 +1,6 @@
 // import Error404 from "../components/Error404"
-import Home from "../components/Home"
-import Register from "../components/Register"
+import Home from "../pages/Home"
+import Register from "../pages/Register"
 
 
 
